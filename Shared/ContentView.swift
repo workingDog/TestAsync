@@ -40,6 +40,27 @@ class APIClient: ObservableObject {
             posts[ndx].comments = comments
         }
     }
+
+//    func getAll2() async {
+//        var postComts = [(pid: Int, coments: [Comment])]()
+//        await withTaskGroup(of: (Int, [Comment]).self) { group in
+//            await getPosts()
+//            for post in posts {
+//                group.async {
+//                    let comments: [Comment] = await self.fetchThem(with: post)
+//                    return (post.id , comments)
+//                }
+//            }
+//            for await pair in group {
+//                postComts.append(pair)
+//            }
+//        }
+//        for (pid,coments) in postComts {
+//            if let ndx = posts.firstIndex(where: {$0.id == pid}) {
+//                posts[ndx].comments = coments
+//            }
+//        }
+//    }
     
     func getAll() async {
         await withTaskGroup(of: Void.self) { group in
@@ -53,8 +74,10 @@ class APIClient: ObservableObject {
     private func fetchThem<T: Decodable>(with post: Post? = nil) async -> [T] {
         var url: URL
         if post == nil {
+  //          print("---> post ")
             url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         } else {
+  //          print("----------> comments for \(post!.id)")
             url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(post!.id)/comments")!
         }
         let request = URLRequest(url: url)
