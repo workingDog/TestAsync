@@ -1,10 +1,9 @@
 //
 //  ContentView.swift
-//  TestAsync
+//  Shared
 //
 //  Created by Ringo Wathelet on 2021/07/12.
 //
-
 
 import SwiftUI
 
@@ -103,3 +102,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
