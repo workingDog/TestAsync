@@ -61,7 +61,7 @@ class APIClient: ObservableObject {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                // throw URLError(.badServerResponse)
+                // throw URLError(.badServerResponse)   //  todo
                 print(URLError(.badServerResponse))
                 return []
             }
