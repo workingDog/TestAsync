@@ -36,7 +36,7 @@ class APIClient: ObservableObject {
     }
     
     func getCommentsFor(post: Post) async {
-        let comments: [Comment] = await fetchThis(post: post)
+        let comments: [Comment] = await fetchThis(with: post)
         if let ndx = posts.firstIndex(where: {$0.id == post.id}) {
             posts[ndx].comments = comments
         }
@@ -51,7 +51,7 @@ class APIClient: ObservableObject {
         }
     }
     
-    private func fetchThis<T: Decodable>(post: Post? = nil) async -> [T] {
+    private func fetchThis<T: Decodable>(with post: Post? = nil) async -> [T] {
         var url: URL
         if post == nil {
             url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
@@ -96,9 +96,7 @@ struct ContentView: View {
             await apiClient.getAll()
         }
     }
-    
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
