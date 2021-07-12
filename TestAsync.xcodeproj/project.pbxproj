@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C70C40B8269BE66200C794DB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C70C40B7269BE66200C794DB /* README.md */; };
 		C70FE060269BE17200C2B9DC /* TestAsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70FE05F269BE17200C2B9DC /* TestAsyncApp.swift */; };
 		C70FE062269BE17200C2B9DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70FE061269BE17200C2B9DC /* ContentView.swift */; };
 		C70FE064269BE17200C2B9DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70FE063269BE17200C2B9DC /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C70C40B7269BE66200C794DB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C70FE05C269BE17200C2B9DC /* TestAsync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAsync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70FE05F269BE17200C2B9DC /* TestAsyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAsyncApp.swift; sourceTree = "<group>"; };
 		C70FE061269BE17200C2B9DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +38,7 @@
 		C70FE053269BE17200C2B9DC = {
 			isa = PBXGroup;
 			children = (
+				C70C40B7269BE66200C794DB /* README.md */,
 				C70FE05E269BE17200C2B9DC /* TestAsync */,
 				C70FE05D269BE17200C2B9DC /* Products */,
 			);
@@ -127,6 +130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C70C40B8269BE66200C794DB /* README.md in Resources */,
 				C70FE067269BE17200C2B9DC /* Preview Assets.xcassets in Resources */,
 				C70FE064269BE17200C2B9DC /* Assets.xcassets in Resources */,
 			);
