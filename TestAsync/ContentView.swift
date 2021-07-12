@@ -32,11 +32,11 @@ class APIClient: ObservableObject {
     static let shared = APIClient()
     
     func getPosts() async {
-        posts = await fetchThis()
+        posts = await fetchThem()
     }
     
     func getCommentsFor(post: Post) async {
-        let comments: [Comment] = await fetchThis(with: post)
+        let comments: [Comment] = await fetchThem(with: post)
         if let ndx = posts.firstIndex(where: {$0.id == post.id}) {
             posts[ndx].comments = comments
         }
@@ -51,7 +51,7 @@ class APIClient: ObservableObject {
         }
     }
     
-    private func fetchThis<T: Decodable>(with post: Post? = nil) async -> [T] {
+    private func fetchThem<T: Decodable>(with post: Post? = nil) async -> [T] {
         var url: URL
         if post == nil {
             url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
