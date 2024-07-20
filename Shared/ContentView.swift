@@ -24,11 +24,8 @@ struct Comment: Decodable, Identifiable {
     let body: String
 }
 
-@MainActor
-class APIClient: ObservableObject {
-    @Published var posts = [Post]()
-    
-    static let shared = APIClient()
+@Observable class PostsManager {
+    var posts = [Post]()
     
     func getPosts() async {
         posts = await fetchThem()
@@ -45,7 +42,7 @@ class APIClient: ObservableObject {
         await withTaskGroup(of: Void.self) { group in
             await getPosts()
             for post in posts {
-                group.async { await self.getCommentsFor(post: post) }
+                group.addTask { await self.getCommentsFor(post: post) }
             }
         }
     }
@@ -76,12 +73,11 @@ class APIClient: ObservableObject {
 }
 
 struct ContentView: View {
-    
-    @StateObject var apiClient = APIClient.shared
+    @State var manager = PostsManager()
     
     var body: some View {
         List {
-            ForEach(apiClient.posts, id: \.id) { post in
+            ForEach(manager.posts) { post in
                 VStack {
                     Text(post.title)
                     if let comments = post.comments {
@@ -92,13 +88,11 @@ struct ContentView: View {
             }
         }
         .task {
-            await apiClient.getAll()
+            await manager.getAll()
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
